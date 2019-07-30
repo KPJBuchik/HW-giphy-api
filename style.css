@@ -1,0 +1,23 @@
+img {display:block;
+}
+.gif-viewholder {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  
+    margin: -1rem -1rem;
+
+
+
+    flex: 1 0 22rem;
+    margin: 1rem;
+
+}
+.allgifs {
+    width: 200px;
+    height: 200px;
+}
+
+
+h1 {margin-right:50%;}
+ 
