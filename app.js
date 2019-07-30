@@ -1,7 +1,7 @@
 
 
 $(document).ready();
-var gifCategories = ["land of chocolate", "see my vests", "shelbyville", "thats a paddlin", "hank scorpio","mcbain","stupid sexy flanders", "boourns","santas little helper"]
+var gifCategories = ["land of chocolate", "see my vests", "shelbyville", "thats a paddlin", "hank scorpio", "mcbain", "stupid sexy flanders", "boourns", "santas little helper"]
 
 
 function displayButtons() {
@@ -31,29 +31,29 @@ function displayGifs() {
         console.log(response);
 
         for (let i = 0; i < 24; i++) {
-            if (response.data[i].rating!== "r") {
-             let results = response.data[i];
+            if (response.data[i].rating !== "r") {
+                let results = response.data[i];
 
-            let gifDiv = $("<div>")
-            let rating = results.rating;
-                
-            let ratingDisplay = $("<p>").text(rating);
-            let animatedGif = results.images.fixed_height.url;
-            let stillGif = results.images.fixed_height_still.url;
+                let gifDiv = $("<div>")
+                let rating = results.rating;
 
-            //makes still possible
-            let gifDisplay = $("<img>")
-            gifDisplay.addClass("allgifs")
-            gifDisplay.attr("src", stillGif);
-            gifDisplay.attr("data-still", stillGif)
-            gifDisplay.attr("data-animate", animatedGif)
-            gifDisplay.attr("data-state", "still")
+                let ratingDisplay = $("<p>").text(rating);
+                let animatedGif = results.images.fixed_height.url;
+                let stillGif = results.images.fixed_height_still.url;
+
+                //makes still possible
+                let gifDisplay = $("<img>")
+                gifDisplay.addClass("allgifs")
+                gifDisplay.attr("src", stillGif);
+                gifDisplay.attr("data-still", stillGif)
+                gifDisplay.attr("data-animate", animatedGif)
+                gifDisplay.attr("data-state", "still")
 
 
-            //displays ratings after images
-            gifDiv.append(ratingDisplay)
-            gifDiv.prepend(gifDisplay)
-            $(".gif-viewholder").append(gifDiv)
+                //displays ratings after images
+                gifDiv.append(ratingDisplay)
+                gifDiv.prepend(gifDisplay)
+                $(".gif-viewholder").append(gifDiv)
 
             }
         }
@@ -81,7 +81,7 @@ $(".gif-viewholder").on("click", ".allgifs", function () {
         $(this).attr('src', $(this).data('animate'));
         $(this).attr('data-state', 'animate');
     }
-    
+
     else {
         $(this).attr('src', $(this).data('still'));
         $(this).attr('data-state', 'still');
@@ -90,25 +90,3 @@ $(".gif-viewholder").on("click", ".allgifs", function () {
     }
 
 })
-
-
-/*
-function searchbar (){}
-
-
-$("#buttons").on("click", function () {
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-    gif + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
-$.ajax({
-    url: queryURL,
-    method: "GET"})
-    var gif = $(this).attr("data-name")
-    function displayGifs() {
-        $("gifview-holder").img(response)
-            .then(function (response) {
-                var imageUrl = response.data.image_original_url;
-                var gifDisplay = $("<img>");
-                gifDisplay.attr("src", imageUrl)
-            $("#images").prepend(catImage)
-            }
-        }*/
