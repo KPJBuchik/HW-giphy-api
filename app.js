@@ -1,7 +1,7 @@
 
 
 $(document).ready();
-var gifCategories = ["cat", " incredulous Jaguar Fan", "gil", "360 no scope", "table magic trick"]
+var gifCategories = ["land of chocolate", "see my vests", "shelbyville", "thats a paddlin", "hank scorpio","mcbain","stupid sexy flanders", "boourns","santas little helper"]
 
 
 function displayButtons() {
@@ -9,7 +9,7 @@ function displayButtons() {
 
     for (let i = 0; i < gifCategories.length; i++) {
 
-        let newButton = $("<button>")
+        let newButton = $("<p class=gif-buttons>")
         newButton.addClass("categories");
         newButton.attr("data-name", gifCategories[i]);
         newButton.text(gifCategories[i])
@@ -31,15 +31,18 @@ function displayGifs() {
         console.log(response);
 
         for (let i = 0; i < 24; i++) {
-            var gifDiv = $("<div>")
-            var rating = response.data[i].rating;
+            if (response.data[i].rating!== "r") {
+             let results = response.data[i];
 
-            var ratingDisplay = $("<p>").text(rating);
-            var animatedGif = response.data[i].images.fixed_height.url;
-            var stillGif = response.data[i].images.fixed_height_still.url;
+            let gifDiv = $("<div>")
+            let rating = results.rating;
+                
+            let ratingDisplay = $("<p>").text(rating);
+            let animatedGif = results.images.fixed_height.url;
+            let stillGif = results.images.fixed_height_still.url;
 
             //makes still possible
-            var gifDisplay = $("<img>")
+            let gifDisplay = $("<img>")
             gifDisplay.addClass("allgifs")
             gifDisplay.attr("src", stillGif);
             gifDisplay.attr("data-still", stillGif)
@@ -52,28 +55,16 @@ function displayGifs() {
             gifDiv.prepend(gifDisplay)
             $(".gif-viewholder").append(gifDiv)
 
-
+            }
         }
 
     });
 }
 
-function searchGifs (){
-
-
-
-
-
-
-}
-
 //adds buttons through input field 
 $("#add-gif").on("click", function (event) {
     event.preventDefault();
-
     var giphy = $("#gif-input").val().trim();
-    displayGifs(giphy)
-
     gifCategories.push(giphy)
     displayButtons()
 });
@@ -99,3 +90,25 @@ $(".gif-viewholder").on("click", ".allgifs", function () {
     }
 
 })
+
+
+/*
+function searchbar (){}
+
+
+$("#buttons").on("click", function () {
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+    gif + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+$.ajax({
+    url: queryURL,
+    method: "GET"})
+    var gif = $(this).attr("data-name")
+    function displayGifs() {
+        $("gifview-holder").img(response)
+            .then(function (response) {
+                var imageUrl = response.data.image_original_url;
+                var gifDisplay = $("<img>");
+                gifDisplay.attr("src", imageUrl)
+            $("#images").prepend(catImage)
+            }
+        }*/

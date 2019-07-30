@@ -11,13 +11,66 @@ img {display:block;
 
     flex: 1 0 22rem;
     margin: 1rem;
+    margin-left: 25%;
 
 }
+
+
 .allgifs {
     width: 200px;
     height: 200px;
 }
 
 
-h1 {margin-right:50%;}
+h1 {   margin-left:30%
+}
  
+
+body {font-family: 'Rock Salt', cursive;
+background-color:blue;
+color:yellow;
+
+}
+
+header {
+    padding: 10px;
+    margin-left: 150px;
+
+}
+.gif-buttons {
+    width: 120px;
+    height: 140px;
+	text-align:center;
+	background: #f2f9fe;
+    display:inline-block;
+    cursor:hover;
+	position: relative;
+	margin: 120px auto 20px;
+    color:black;
+    border-radius: 100px;
+    cursor:pointer;
+}
+
+.gif-buttons:after, .gif-buttons:before {
+	content: '';
+    position: absolute;
+    z-indeX: -1;
+    background: #f2f9fe;
+}
+
+.gif-buttons:after {
+	width: 100px;
+	height: 100px;
+	border-radius: 100px;
+	top: -50px;
+    left: 50px;
+
+}
+
+.gif-buttons:before {
+	width: 180px;
+    height: 180px;
+	border-radius: 200px;
+	top: -90px;
+	right: 50px;
+}
