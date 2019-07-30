@@ -1,23 +1,24 @@
 
 
-$(document).ready();
-var gifCategories = ["land of chocolate", "see my vests", "shelbyville", "thats a paddlin", "hank scorpio", "thats the", "stupid sexy flanders", "boourns", "everything's coming up milhouse"]
 
+var gifCategories = ["land of chocolate", "see my vests", "shelbyville", "thats a paddlin", "hank scorpio", "thats the Joke", "stupid sexy flanders", "boourns", "everything's coming up milhouse"]
 
 function displayButtons() {
     $(".button-view").empty();
 
     for (let i = 0; i < gifCategories.length; i++) {
 
-        let newButton = $("<p class=gif-buttons>")
-        newButton.addClass("categories");
+        let newButton = $("<p>")
+        newButton.addClass("gif-buttons");
         newButton.attr("data-name", gifCategories[i]);
         newButton.text(gifCategories[i])
         $(".button-view").append(newButton);
     }
 };
+
 //displays gifs, ajax call to gather data, for loop to display multiple gifs
 function displayGifs() {
+
     $(".gif-viewholder").empty();
 
     var gifCategories = $(this).attr("data-name")
@@ -30,10 +31,10 @@ function displayGifs() {
     }).then(function (response) {
         console.log(response);
 
-        for (let i = 0; i < 24; i++) {
+        for (let i = 0; i < 5; i++) {
             if (response.data[i].rating !== "r") {
                 let results = response.data[i];
-                
+
                 let gifDiv = $("<div>")
                 let rating = results.rating;
 
@@ -43,7 +44,9 @@ function displayGifs() {
 
                 //makes still possible
                 let gifDisplay = $("<img>")
-                gifDisplay.addClass("allgifs")
+                gifDisplay.addClass("allgifs");
+
+                
                 gifDisplay.attr("src", stillGif);
                 gifDisplay.attr("data-still", stillGif)
                 gifDisplay.attr("data-animate", animatedGif)
@@ -52,8 +55,7 @@ function displayGifs() {
 
                 //displays ratings after images
                 gifDiv.append(ratingDisplay)
-                gifDiv.prepend(gifDisplay)
-                
+                gifDiv.append(gifDisplay)
                 $(".gif-viewholder").append(gifDiv)
 
             }
@@ -71,9 +73,10 @@ $("#add-gif").on("click", function (event) {
 });
 
 
-$(document).on("click", ".categories", displayGifs);
+$(document).on("click", ".gif-buttons", displayGifs)
+displayButtons()
 
-displayButtons();
+
 
 //pauses gifs 
 $(".gif-viewholder").on("click", ".allgifs", function () {
@@ -90,5 +93,6 @@ $(".gif-viewholder").on("click", ".allgifs", function () {
 
 
     }
+
 
 })
