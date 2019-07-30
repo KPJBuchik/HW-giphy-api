@@ -1,7 +1,7 @@
 
 
 $(document).ready();
-var gifCategories = ["land of chocolate", "see my vests", "shelbyville", "thats a paddlin", "hank scorpio", "mcbain", "stupid sexy flanders", "boourns", "santas little helper"]
+var gifCategories = ["land of chocolate", "see my vests", "shelbyville", "thats a paddlin", "hank scorpio", "thats the", "stupid sexy flanders", "boourns", "everything's coming up milhouse"]
 
 
 function displayButtons() {
@@ -33,7 +33,7 @@ function displayGifs() {
         for (let i = 0; i < 24; i++) {
             if (response.data[i].rating !== "r") {
                 let results = response.data[i];
-
+                
                 let gifDiv = $("<div>")
                 let rating = results.rating;
 
@@ -53,6 +53,7 @@ function displayGifs() {
                 //displays ratings after images
                 gifDiv.append(ratingDisplay)
                 gifDiv.prepend(gifDisplay)
+                
                 $(".gif-viewholder").append(gifDiv)
 
             }
@@ -71,6 +72,7 @@ $("#add-gif").on("click", function (event) {
 
 
 $(document).on("click", ".categories", displayGifs);
+
 displayButtons();
 
 //pauses gifs 
